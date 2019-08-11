@@ -1,0 +1,128 @@
+ <beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.2.xsd">	
+	<context:annotation-config />
+	<context:component-scan
+		base-package="com.assistantteacher.controller" />
+		<context:component-scan
+		base-package="com.assistantteacher.service" />
+		<context:component-scan
+		base-package="com.assistantteacher.dao" />
+		<context:component-scan
+		base-package="com.assistantteacher.entity" />
+		
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:annotation-driven />
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tile/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/assistantteacher_final_db?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.assistantteacher.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+            	<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+            	<prop key="hibernate.connection.charSet">UTF-8</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.search.default.directory_provider">filesystem</prop>
+			</props>
+		</property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+ 	<security:http auto-config="true" use-expressions="true">
+ 		<security:intercept-url pattern="/admin/**" access="permitAll" />
+		<security:intercept-url pattern="/book/bookOrder.htm" access="hasAnyRole('ROLE_Student,ROLE_Teacher')" />
+		<security:intercept-url pattern="/resources/assets/css/**" access="permitAll" />
+		<security:intercept-url pattern="/resources/assets/font-awesome/**" access="permitAll" />
+		<security:intercept-url pattern="/resources/assets/images/**" access="permitAll" />
+		<security:intercept-url pattern="/resources/assets/js/**" access="permitAll" />
+		<security:intercept-url pattern="/resources/**" access="permitAll" />
+		<security:intercept-url pattern="/resources/assets/**" access="permitAll" />
+		<security:intercept-url pattern="/WEB-INF/views/**" access="hasAnyRole('ROLE_Admin,ROLE_Teacher')"/>
+
+		<security:access-denied-handler error-page="/403.htm"/>
+		<security:form-login 
+			login-processing-url="/login.htm"
+			login-page="/welcome.htm"
+			authentication-failure-url="/welcome.htm?error=1"
+			default-target-url="/home.htm"
+		/>
+		<security:logout 
+			logout-url="/logout.htm" 
+			logout-success-url="/welcome.htm"
+			delete-cookies="JSESSIONID" 
+			invalidate-session="true" 
+		/>
+		<security:csrf disabled="true"/>
+	</security:http>
+	<bean id="Admin_AuthenticationProvider" class="com.assistantteacher.authentication.Admin_AuthenticationProvider" />
+	<security:authentication-manager>
+		<security:authentication-provider ref="Admin_AuthenticationProvider" />
+	</security:authentication-manager>
+	<!-- Multipartresolver -->
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver">
+		<property name="maxUploadSize" value="500000000"/>
+		<property name="maxInMemorySize" value="500000000"/>
+	</bean>	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="TeachingHelper80@gmail.com" />
+		<property name="password" value="TeachingHelper11" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.mime.charset">UTF-8</prop>
+				<prop key="mail.transport.protocol">smtp</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

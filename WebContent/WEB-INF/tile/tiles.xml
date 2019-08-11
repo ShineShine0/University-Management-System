@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="base.definition" template="/WEB-INF/layout/layout.jsp">
+		<put-attribute name="title" value="Teaching Assistant System" />
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	<definition name="login.definition" template="/WEB-INF/layout/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="leftMenu" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="left.definition" template="/WEB-INF/views/admin/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/WEB-INF/views/admin/header.jsp" />
+		<put-attribute name="left" value="/WEB-INF/views/admin/left_panel.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="adminwelcome" extends="left.definition">
+			<put-attribute name="title" value="" />
+			<put-attribute name="body" value="/WEB-INF/views/admin/admin_welcome.jsp" />
+	</definition>
+
+	<definition name="adminLogin" extends="login.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/admin_login.jsp" />
+	</definition>
+	<definition name="home" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/welcome.jsp" />
+	</definition>
+	<definition name="403" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/403.jsp" />
+	</definition>
+	<definition name="addMember" extends="left.definition">
+		<put-attribute name="title" value="Member" />
+		<put-attribute name="body" value="/WEB-INF/views/Member/addMember.jsp" />
+	</definition>
+	<definition name="updateMember" extends="left.definition">
+		<put-attribute name="title" value="Member" />
+		<put-attribute name="body" value="/WEB-INF/views/Member/updateMember.jsp" />
+	</definition>
+	<definition name="updateStudent" extends="left.definition">
+		<put-attribute name="title" value="Member" />
+		<put-attribute name="body" value="/WEB-INF/views/Student/updateStudent.jsp" />
+	</definition>
+	<definition name="editClassLevel" extends="left.definition">
+		<put-attribute name="title" value="ClassLevel" />
+		<put-attribute name="body" value="/WEB-INF/views/ClassLevel/editClassLevel.jsp" />
+	</definition>
+	<definition name="editSection" extends="left.definition">
+		<put-attribute name="title" value="Section" />
+		<put-attribute name="body" value="/WEB-INF/views/ClassLevel/editSection.jsp" />
+	</definition>
+	
+	
+	<definition name="studentManagement" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Student/studentManagement.jsp" />
+	</definition>
+	<definition name="bookManagement" extends="left.definition">
+		<put-attribute name="title" value="bookManagement" />
+		<put-attribute name="body" value="/WEB-INF/views/book/bookmanagement.jsp" />
+	</definition>
+	
+	<definition name="yearManagement" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/ClassLevel/classLevelHome.jsp" />
+	</definition>
+	<definition name="attendanceManagement" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Attendance/attendance.jsp" />
+	</definition>
+	<definition name="attendanceDate" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Attendance/attendanceListByDate.jsp" />
+	</definition>
+	<definition name="attendanceSubject" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Attendance/attendanceListBySubject.jsp" />
+	</definition>
+	<definition name="attendanceMonth" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Attendance/attendanceListByMonth.jsp" />
+	</definition>
+	
+	<definition name="attendanceSemester" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Attendance/semesterAttendance.jsp" />
+	</definition>
+		<definition name="lessonPlan" extends="left.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/LessonPlan/lesson_Plan.jsp" />
+	</definition>
+		<definition name="viewLessonPlan" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/LessonPlan/viewLessonPlan.jsp" />
+	</definition>
+		<definition name="detailLessonPlan" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/LessonPlan/detailLessonPlan.jsp" />
+	</definition>
+		<!-- <definition name="showTimetable" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/timetable/showTimetable.jsp" />
+	</definition> -->
+	<definition name="checkLessonPlan" extends="left.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/LessonPlan/checkLessonPlan.jsp" />
+	</definition>
+	<definition name="updateLessonPlan" extends="left.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/LessonPlan/updateLessonPlan.jsp" />
+	</definition>
+	<definition name="addActivity" extends="left.definition">
+			<put-attribute name="title" value="" />
+			<put-attribute name="body" value="/WEB-INF/views/Activity/add_activity.jsp" />
+	</definition>
+	<definition name="updateActivity" extends="left.definition">
+			<put-attribute name="title" value="" />
+			<put-attribute name="body" value="/WEB-INF/views/Activity/updateActivity.jsp" />
+	</definition>
+	<definition name="activityList" extends="base.definition">
+			<put-attribute name="title" value="" />
+			<put-attribute name="body" value="/WEB-INF/views/Activity/activity_list.jsp" />
+	</definition>
+	
+	<definition name="checkactivityList" extends="left.definition">
+			<put-attribute name="title" value="" />
+			<put-attribute name="body" value="/WEB-INF/views/Activity/checkActivityList.jsp" />
+	</definition>
+	
+	<!-- <definition name="showWebsite" extends="base.definition">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="/WEB-INF/views/timetable/lookWebsite.jsp" />
+	</definition> -->
+	<definition name="resetPass" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Password/reset_password.jsp" />
+	</definition>
+	<definition name="updatePassword" extends="left.definition">
+		<put-attribute name="title" value="Management" />
+		<put-attribute name="body" value="/WEB-INF/views/Password/updatePassword.jsp" />
+	</definition>
+	<definition name="bookOrder" extends="base.definition">
+		<put-attribute name="title" value="Management"/>
+		<put-attribute name="body" value="/WEB-INF/views/book/BookOrder.jsp"/>
+	</definition>
+	<definition name="bookOrderList" extends="base.definition">
+		<put-attribute name="title" value="Management"/>
+		<put-attribute name="body" value="/WEB-INF/views/book/bookOrderList.jsp"/>
+	</definition>
+	<definition name="updateBook" extends="left.definition">
+		<put-attribute name="title" value="Member"/>
+		<put-attribute name="body" value="/WEB-INF/views/book/updateBook.jsp"/>
+	</definition>
+	<definition name="student_book_order_list" extends="left.definition">
+		<put-attribute name="title" value="Book Order List"/>
+		<put-attribute name="body" value="/WEB-INF/views/book/student_book_order_list.jsp"/>
+	</definition>
+	<definition name="book_order_detail" extends="left.definition">
+		<put-attribute name="title" value="Book Order List"/>
+		<put-attribute name="body" value="/WEB-INF/views/book/book_order_detail.jsp"/>
+	</definition>
+	<definition name="showWebsite" extends="base.definition">
+		<put-attribute name="title" value="Book Order List"/>
+		<put-attribute name="body" value="/WEB-INF/views/timetable/lookWebsite.jsp"/>
+	</definition>
+	
+	
+</tiles-definitions>
+	
