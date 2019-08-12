@@ -22,7 +22,9 @@ import com.assistantteacher.dto.AttSemesterDTO;
 import com.assistantteacher.dto.AttSubjectDTO;
 import com.assistantteacher.dto.AttendanceDTO;
 import com.assistantteacher.dto.AttendanceStudentDTO;
+import com.assistantteacher.dto.MonthAttDTO;
 import com.assistantteacher.dto.MonthDTO;
+import com.assistantteacher.dto.SubjectAttDTO;
 import com.assistantteacher.dto.SubjectDTO;
 import com.assistantteacher.entity.Attendance;
 import com.assistantteacher.entity.ClassLevel;
@@ -130,11 +132,14 @@ public class AttendanceServiceImpl implements AttendanceService {
 		 List<MonthDTO> monthList=new ArrayList<MonthDTO>();
 		 int i=0;
 		 for(String m : months){
-			 i++;
-			 MonthDTO mon=new MonthDTO();
-			 mon.setMonth(i);
-			 mon.setName(m);
-			 monthList.add(mon);
+			 if(m!=""){
+				 i++;
+				 MonthDTO mon=new MonthDTO();
+				 mon.setMonth(i);
+				 mon.setName(m);
+				 monthList.add(mon);
+			 }
+			
 		 }
 		 return monthList;
 	}
@@ -210,6 +215,19 @@ public class AttendanceServiceImpl implements AttendanceService {
 		}
 		attDTO.setDate(attDate);
 		return attendanceDao.getAttListByDate(attDTO);
+	}
+
+	@Override
+	public List<MonthAttDTO> getAttListBySemesterForStudent(Long userId) {
+		// TODO Auto-generated method stub
+		return attendanceDao.getAttListBySemesterForStudent(userId, getMonthList());
+	}
+
+	@Override
+	public List<SubjectAttDTO> getSubjectAttendanceForStudent(Long userId) {
+		// TODO Auto-generated method stub
+		int mon=Calendar.getInstance().get(Calendar.MONTH)+1;
+		return attendanceDao.getSubjectAttendanceForStudent(userId, mon);
 	}
 
 	

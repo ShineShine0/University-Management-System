@@ -21,7 +21,9 @@ import com.assistantteacher.dto.AttSemesterDTO;
 import com.assistantteacher.dto.AttSubjectDTO;
 import com.assistantteacher.dto.AttendanceDTO;
 import com.assistantteacher.dto.AttendanceStudentDTO;
+import com.assistantteacher.dto.MonthAttDTO;
 import com.assistantteacher.dto.MonthDTO;
+import com.assistantteacher.dto.SubjectAttDTO;
 import com.assistantteacher.dto.SubjectDTO;
 import com.assistantteacher.entity.Attendance;
 import com.assistantteacher.entity.ClassLevel;
@@ -280,7 +282,24 @@ public class AttendanceDaoImpl extends GenericDaoImpl<Attendance, Long>implement
 		}
 		return attList;
 	}
-
+	public List<MonthAttDTO> getAttendanceByMonth(Long stdId,
+			List<MonthDTO> monthList) {
+		// TODO Auto-generated method stub
+		List<MonthAttDTO>attList=new ArrayList<>();
+		for(MonthDTO mon : monthList){
+			MonthAttDTO m=new MonthAttDTO();
+			SQLQuery sql=getCurrentSession().createSQLQuery("SELECT COALESCE(SUM(a.AttCount*a.SubjectTime),0) as totalCount FROM attendance a where month(a.date)=:Month and a.StudentId=:StdId");
+			sql.setParameter("Month", mon.getMonth());
+			sql.setParameter("StdId", stdId);
+		
+			//sql.setResultTransformer(Transformers.aliasToBean(Double.class));
+			double count=(Double)sql.uniqueResult();
+			m.setAttCount(count);
+			m.setMonth(mon.getName());
+			attList.add(m);
+		}
+		return attList;
+	}
 	@Override
 	public List<Double> getAttendanceListBySubject(Long stdId,
 		Long classLevelId, int month,List<SubjectDTO> subjectList) {
@@ -428,6 +447,59 @@ Criteria c=getCurrentSession().createCriteria(Student.class)
 				double count=(Double)sql.uniqueResult();
 				attList.add(count);
 			
+			}
+				
+			
+			return attList;
+		}
+		
+		@Override
+		public List<MonthAttDTO> getAttListBySemesterForStudent(Long userId,
+				List<MonthDTO> monList) {
+			// TODO Auto-generated method stub
+			Criteria c=getCurrentSession().createCriteria(Student.class)
+					
+					.createAlias("user", "u",JoinType.LEFT_OUTER_JOIN);
+					
+			c.add(Restrictions.eq("u.id",userId));
+			
+			Student std=(Student)c.uniqueResult();
+			List<MonthAttDTO> attList=getAttendanceByMonth(std.getId(),monList);
+			return attList;
+		}
+
+		@Override
+		public List<SubjectAttDTO> getSubjectAttendanceForStudent(Long userId,int month) {
+			// TODO Auto-generated method stub
+			Criteria c=getCurrentSession().createCriteria(Student.class)
+					
+					.createAlias("user", "u",JoinType.LEFT_OUTER_JOIN);
+					
+			c.add(Restrictions.eq("u.id",userId));
+			
+			Student std=(Student)c.uniqueResult();
+			List<SubjectDTO> subjectList=getSubjectListByClassLevel(std.getClassLevel().getId(), std.getMajor().getId());
+			List<SubjectAttDTO> subAttList=getAttendanceListForSubject(std.getId(), std.getClassLevel().getId(), month, subjectList);
+			
+			return subAttList;
+		
+		}
+		private List<SubjectAttDTO> getAttendanceListForSubject(Long studentId,
+				Long classLevelId, int month, List<SubjectDTO> subjectList) {
+	
+		   
+			List<SubjectAttDTO>attList=new ArrayList<SubjectAttDTO>();
+			for(SubjectDTO sub : subjectList){
+				SQLQuery sql=getCurrentSession().createSQLQuery("SELECT COALESCE(SUM(a.AttCount*a.SubjectTime),0) as totalCount FROM attendance a where month(a.date)=:Month  and  a.subjectId=:SubjectId and a.StudentId=:StdId");
+				sql.setParameter("Month", month);
+			    sql.setParameter("StdId", studentId);
+				sql.setParameter("SubjectId", sub.getId());
+				//sql.setResultTransformer(Transformers.aliasToBean(Double.class));
+				double count=(Double)sql.uniqueResult();
+				SubjectAttDTO subAtt=new SubjectAttDTO();
+				subAtt.setAttCount(count);
+				subAtt.setSubjectName(sub.getName());
+				attList.add(subAtt);
 			}
 				
 			

@@ -8,7 +8,9 @@ import com.assistantteacher.dto.AttSemesterDTO;
 import com.assistantteacher.dto.AttSubjectDTO;
 import com.assistantteacher.dto.AttendanceDTO;
 import com.assistantteacher.dto.AttendanceStudentDTO;
+import com.assistantteacher.dto.MonthAttDTO;
 import com.assistantteacher.dto.MonthDTO;
+import com.assistantteacher.dto.SubjectAttDTO;
 import com.assistantteacher.dto.SubjectDTO;
 import com.assistantteacher.entity.Attendance;
 import com.assistantteacher.entity.ClassLevel;
@@ -35,6 +37,7 @@ public interface AttendanceDao {
 	public List<AttSubjectDTO> getAttListBySubject(AttendanceDTO attDTO);
 	public List<AttSubjectDTO> getAttListByMonth(AttendanceDTO attDTO);
 	public List<AttDateDTO> getAttListByDate(AttendanceDTO attDTO);
-	
+	public List<MonthAttDTO> getAttListBySemesterForStudent(Long userId,List<MonthDTO> monList);
+	public List<SubjectAttDTO> getSubjectAttendanceForStudent(Long userId,int month);
  
 }

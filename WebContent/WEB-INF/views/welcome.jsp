@@ -109,7 +109,7 @@
                   <a class="text-white" href="#">Attendance Records</a>
                </h6>
                <div class="mb-1 text-white-50 small">Nov 12</div>
-               <a class="btn btn-outline-light btn-sm" role="button" href="<c:url value='/admin/attendanceList.htm'/>">Continue reading</a>
+               <a class="btn btn-outline-light btn-sm" role="button" href="<c:url value='/admin/getStudentAttendance.htm'/>">Continue reading</a>
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="<c:url value='/resources/Images/settingPhoto/att.jpg' />" style="width: 200px; height: 150px;">
          </div>

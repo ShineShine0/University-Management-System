@@ -1,8 +1,10 @@
 package com.assistantteacher.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -203,6 +205,18 @@ public class AttendanceController {
 		model.addAttribute("majorList",attendanceService.getMajorList());
 		model.addAttribute("sectionList",attendanceService.getSectionList());		
 		return "attendanceview";
+	}
+	@RequestMapping(value="/getStudentAttendance.htm")
+	public String getStudentAttendance(Model model){
+		 Calendar c = Calendar.getInstance();
+		   String monName=c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH );
+		model.addAttribute("attendanceDTO", new AttendanceDTO());
+		Long userId = SecurityUtil.getCurrentLoginAdminUser().getId();
+		model.addAttribute("monthList",attendanceService.getMonthList());
+		model.addAttribute("montAttList", attendanceService.getAttListBySemesterForStudent(userId));
+		model.addAttribute("subAttList",attendanceService.getSubjectAttendanceForStudent(userId));
+		model.addAttribute("month", monName);
+		return "student_attendance";
 	}
 	
 }

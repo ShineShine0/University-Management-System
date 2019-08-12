@@ -9,7 +9,9 @@ import com.assistantteacher.dto.AttSemesterDTO;
 import com.assistantteacher.dto.AttSubjectDTO;
 import com.assistantteacher.dto.AttendanceDTO;
 import com.assistantteacher.dto.AttendanceStudentDTO;
+import com.assistantteacher.dto.MonthAttDTO;
 import com.assistantteacher.dto.MonthDTO;
+import com.assistantteacher.dto.SubjectAttDTO;
 import com.assistantteacher.dto.SubjectDTO;
 import com.assistantteacher.entity.ClassLevel;
 import com.assistantteacher.entity.Major;
@@ -36,5 +38,7 @@ public interface AttendanceService {
 	public List<Integer> getDayListByMonth(int month);
 	public List<AttDateDTO> getAttListByDate(AttendanceDTO attDTO);
 	List<Subject> getSubjectList();
+	public List<MonthAttDTO> getAttListBySemesterForStudent(Long userId);
+	public List<SubjectAttDTO> getSubjectAttendanceForStudent(Long userId);
 	
 }
