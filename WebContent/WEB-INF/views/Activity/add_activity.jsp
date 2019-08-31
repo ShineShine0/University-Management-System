@@ -107,10 +107,11 @@ width:100%;
 							<form:hidden path="teacherId" value="${teacherName}"/>
 						</div>
 
-						<div class="col-md-6" style="margin-top: 10px;">from:</div>
+					<%-- 	<div class="col-md-6" style="margin-top: 10px;">from:</div>
 						<div class="col-md-6" style="margin-top: 10px;">
 							<form:input  path="teacherMail" disabled="true" value="${teacherMail}" />
-						</div>
+						</div> --%>
+						
 						<div class="col-md-6" style="margin-top: 10px;">Date:</div>
 						<div class="col-md-6" style="margin-top: 10px;">
 							<form:input path="date" placeholder="Date..." required="true"

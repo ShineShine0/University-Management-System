@@ -82,7 +82,7 @@ public String saveActivity(Model model, @ModelAttribute(value = "activityDTO") A
 			}
 		}
 	}
-	return "redirect:/teacher/addActivity.htm";
+	return "redirect:/teacher/checkActivity.htm";
 }
 
 /*@RequestMapping(value="/addActivity.htm",method=RequestMethod.POST)
@@ -127,5 +127,9 @@ public @ResponseBody String update(Model model,@PathVariable (value="id")Long id
 	return"redirect:/teacher/add_Activity.htm";
 	
 }
+/*@RequestMapping(value="/ajax/delete-document/{id}")
+public @ResponseBody Boolean deleteLessonPlan(Model model,@PathVariable(value="id")long id){
+	return activityService.delete(id);
+}*/
 	
 }

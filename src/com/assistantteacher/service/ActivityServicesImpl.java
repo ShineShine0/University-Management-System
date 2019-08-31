@@ -66,6 +66,12 @@ public class ActivityServicesImpl implements ActivityServices {
 			
 			
 		}
+		@Override
+		public Boolean delete(long id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
 	
 		
 	

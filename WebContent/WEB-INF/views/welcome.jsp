@@ -114,7 +114,7 @@
             <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="<c:url value='/resources/Images/settingPhoto/att.jpg' />" style="width: 200px; height: 150px;">
          </div>
       </div>
-      <div class="col-md-4">
+      <%-- <div class="col-md-4">
          <div class="card text-white bg-primary flex-md-row mb-4 shadow-sm h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
                <h6 class="mb-0">
@@ -125,8 +125,8 @@
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="<c:url value='/resources/Images/settingPhoto/hh.jpg' />" style="width: 200px; height: 150px;">
          </div>
-      </div>
-      <div class="col-md-4">
+      </div> --%>
+      <div class="col-md-6">
          <div class="card text-white bg-success flex-md-row mb-4 shadow-sm h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
                <h6 class="mb-0">
@@ -138,7 +138,7 @@
             <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="<c:url value='/resources/Images/settingPhoto/pp.jpg' />" style="width: 200px; height: 150px;">
          </div>
       </div>
-       <div class="col-md-4">
+       <div class="col-md-6">
          <div class="card text-white bg-primary flex-md-row mb-4 shadow-sm h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
                <h6 class="mb-0">

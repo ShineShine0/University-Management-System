@@ -8,11 +8,11 @@ Gson gsonObj = new Gson();
 Map<Object,Object> map = null;
 List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
  
-map = new HashMap<Object,Object>(); map.put("label", "First Year"); map.put("y", 75); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "Second Year"); map.put("y", 50); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "First Year"); map.put("y", 85); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "Second Year"); map.put("y", 60); list.add(map);
 map = new HashMap<Object,Object>(); map.put("label", "Third Year"); map.put("y", 50); list.add(map);
 map = new HashMap<Object,Object>(); map.put("label", "Fourth Year"); map.put("y", 45); list.add(map);
-map = new HashMap<Object,Object>(); map.put("label", "Fift Year"); map.put("y", 52); list.add(map);
+map = new HashMap<Object,Object>(); map.put("label", "Fift Year"); map.put("y", 50); list.add(map);
 
  
 String dataPoints = gsonObj.toJson(list);
@@ -146,14 +146,15 @@ border-left: .25rem solid #9c27b0!important;
             </div>
             
         
-        </div>
+       
          
         
-     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+     <div id="chartContainer" style="height: 400px; width: 100%;"></div>
      <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
         
  
-
+ </div>
 
         
        
@@ -167,7 +168,7 @@ window.onload = function() {
 	var chart = new CanvasJS.Chart("chartContainer", {
 		animationEnabled: true,
 		title:{
-			text: "Atttendance get by Semester - 2019"
+			text: "Atttendance get by Semester 2018- 2019"
 		},
 		legend: {
 			verticalAlign: "center",

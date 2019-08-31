@@ -97,7 +97,7 @@ public class AttendanceController {
 	public String saveAttendance(@ModelAttribute(value="attDTO") AttendanceDTO attDTO){
 		attDTO.setUserId( SecurityUtil.getCurrentLoginAdminUser().getId());
 		attendanceService.saveAttendanceList(attDTO);
-		return "attendanceManagement";
+		return "redirect:/admin/attendance.htm";
 	}
 	@RequestMapping(value="attendanceListBySubject.htm")
 	public String getAttendanceBySubject(Model model){

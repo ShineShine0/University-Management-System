@@ -38,7 +38,7 @@ public class LessonPlanContoller {
 	public String saveLessonPlan(Model model,@ModelAttribute(value="lessonPlanDto") DocumentDTO document){
 		System.out.println("\n\n\n Save Lesson Plan >>>>>>>" );
 		documentService.saveDocument(document);
-		return "lessonPlan";
+		return "redirect:/teacher/checkLessonPlan.htm";
 	}
 	@RequestMapping(value="/checkLessonPlan.htm")
 	public String listTable(Model model){

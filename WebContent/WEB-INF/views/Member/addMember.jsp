@@ -63,7 +63,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 10px;">
 					Image:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<img id="blah" src="#" alt="no more than 10MB" /><br />
 								<form:input type="file" onchange="readURL(this);"
 									path="imgfile" required="true"/>
@@ -73,7 +73,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 10px;">
 					Name:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="name" placeholder="Name..." required="true" class="form-control"
 								onchange="showAlert(this.id);" type="text" />
 					</div>
@@ -82,7 +82,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 10px;">
 					NRC:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="nrc" placeholder="NRC..." required="true" class="form-control" type="text" />
 					</div>
 					
@@ -91,21 +91,21 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 10px;">
 					Address:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="address" placeholder="Address..." required="true" class="form-control" type="text" />
 					</div>
 					
 					<div class="col-md-6" style="margin-top: 10px;">
 					Date Of Birth:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="dob" placeholder="DateOfBirth..." required="true" class="form-control" type="Date" />
 					</div>
 						
 					<div class="col-md-6" style="margin-top: 10px;">
 					Mobile Number:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="mobileNumber" placeholder="MobileNmber..." required="true" class="form-control" type="text" />
 					</div>
 				
@@ -114,7 +114,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 10px;">
 					Email:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="email" placeholder="Email..." required="true" class="form-control" type="text" />
 					</div>
 					
@@ -122,7 +122,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 10px;">
 					Password:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="password" placeholder="Password..." required="true" class="form-control" type="password" />
 					</div>
 					
@@ -131,7 +131,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 1px;">
 					Position:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<div class="form-control">
 								<form:select path="position">
 									<option data-display="">---User Role---</option>
@@ -145,7 +145,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 1px;">
 					Gender:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<form:input path="gender" placeholder="gender..." required="true" class="form-control" type="text" />
 					</div>
 				
@@ -153,7 +153,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 1px;">
 					Nationality:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 					<div class="form-control">
 								<form:select path="nationality">
 									<option data-display="">---Nationalitiy---</option>
@@ -167,7 +167,7 @@ width:100%;
 					<div class="col-md-6" style="margin-top: 1px;">
 					Department:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 							<div class="form-control">
 								<form:select path="departmentId">
 									<option data-display="">---User Department---</option>
@@ -182,7 +182,7 @@ width:100%;
 				<div class="col-md-6" style="margin-top: 1px;">
 					User Role:
 					</div>
-					<div class="col-md-6" style="margin-top: 10px;">
+					<div class="col-md-3" style="margin-top: 10px;">
 					<div class="form-control">
 								<form:select path="adminRoleId">
 									<option data-display="">---UserRole---</option>

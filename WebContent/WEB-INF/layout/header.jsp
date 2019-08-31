@@ -6,6 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style>
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
  #myBtn {
   display: none;
   position: fixed;
@@ -38,10 +44,10 @@
 				</div>
 				<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
 					<a href="tel:+955976840177"><span class="lnr lnr-phone-handset"></span>
-						<span class="text">user Phone</span></a>
+						
 						
 						<span class="text" style="color:white;">${userName}</span>
-						<span></span><img class="img-profile rounded-circle" src="<c:url value='/resources/userimages/${user.photo}'/>"></span>
+						<span></span><img src="<c:url value='/resources/Images/settingPhoto/img_avatar.png'/>" alt="Avatar" class="avatar"></span>
 				</div>
 			</div>
 		</div>

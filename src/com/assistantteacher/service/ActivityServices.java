@@ -17,5 +17,6 @@ public interface ActivityServices {
 	public void saveActivity(ActivityDTO activityDTO);
 	public List<Activity> getActivityListByUserId(long userId);
 	public void updateActivity(ActivityDTO activityDTO);
+	public Boolean delete(long id);
 
 }
